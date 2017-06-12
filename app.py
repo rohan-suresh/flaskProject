@@ -25,8 +25,9 @@ def getData():
 
 @app.route('/postData', methods = ['POST'])
 def postData():
-	print(request.json.get('zybook_code'))
-	cur.execute("INSERT INTO user(zybook_code, event) VALUES(%s, 'event')", (request.json.get('zybook_code'), ))
+	cur.execute("INSERT INTO user(zybook_code, event) VALUES(%s, %s)", (request.json.get('zybook_code'), request.json.get('user_id')))
+	#datetime.datetime.now().isoformat()
+	#event: chapter_num, section_num, user_id, date
 	conn.commit()
 	return json.dumps({"success": True})
 
