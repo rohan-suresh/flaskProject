@@ -13,7 +13,6 @@ with open('config_file.json') as config_file:
 conn = mdb.connect(host=config['host'], user=config['user'], passwd=config['password'], db=config['db'])
 
 
-#conn = mdb.connect('localhost', 'root', 'rohan1997', 'Events')
 cur = conn.cursor()
 
 @app.route('/')
